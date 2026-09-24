@@ -88,7 +88,7 @@ details p{color:var(--muted);font-size:14px;margin:12px 0 0}
 footer{background:#234642;color:#d8e5e1;padding:35px 0 20px;font-size:12px}
 .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-links{display:flex;gap:20px}
 .footer-note{text-align:center;color:#9db3ae;border-top:1px solid rgba(255,255,255,.12);margin-top:25px;padding-top:16px}
-.mobile-menu{display:none}
+.mobile-menu,.menu-close,.nav-cta,.menu-backdrop{display:none}
 @media(max-width:1000px){
   .issue-grid{grid-template-columns:repeat(4,1fr)}
   .service-grid,.article-grid{grid-template-columns:repeat(2,1fr)}
@@ -96,7 +96,7 @@ footer{background:#234642;color:#d8e5e1;padding:35px 0 20px;font-size:12px}
   .credentials{grid-column:1/-1}
 }
 @media(max-width:700px){
-  header,.nav{height:64px}.nav{padding:0 4%}nav{display:none}.mobile-menu{display:block;border:0;background:none;font-size:25px}
+  header,.nav{height:64px}.nav{padding:0 4%}
   .hero{min-height:610px;background:linear-gradient(0deg,rgba(255,252,243,.98) 8%,rgba(255,252,243,.72) 58%,rgba(255,255,255,.15)),url("https://images.unsplash.com/photo-1758962036832-435aa3194465?auto=format&fit=crop&w=1000&q=80") center/cover}
   .hero-content{padding:40px 0 50px;align-self:end}.hero p{font-size:15px}.actions .btn{width:100%}
   section{padding:52px 0}.section-title h2{font-size:26px}
@@ -106,6 +106,20 @@ footer{background:#234642;color:#d8e5e1;padding:35px 0 20px;font-size:12px}
   .profile-inner{grid-template-columns:1fr}.profile-photo{height:320px}
   .footer-row{flex-direction:column;text-align:center}.footer-links{flex-wrap:wrap;justify-content:center}
 }
+@media(max-width:768px){
+  .nav>.btn-primary{display:none}
+  .mobile-menu{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;font-size:26px;color:var(--deep);cursor:pointer;line-height:1}
+  .mobile-menu:hover{color:var(--green)}
+  nav{position:fixed;top:0;right:0;bottom:0;width:min(300px,80vw);background:#fff;box-shadow:-14px 0 35px rgba(37,79,69,.15);flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:22px 26px;gap:0;margin:0;display:flex;overflow:auto;transform:translateX(100%);transition:transform .32s cubic-bezier(.22,.61,.36,1);z-index:40}
+  nav a{padding:15px 0;border-bottom:1px solid var(--line);width:100%;font-size:16px;font-weight:600;color:#3d524d}
+  nav a:hover{color:var(--green);padding-left:6px;transition:.2s}
+  .menu-close{display:flex;align-items:center;justify-content:center;align-self:flex-end;width:38px;height:38px;border:0;background:#eef5f2;color:var(--green);border-radius:50%;font-size:14px;cursor:pointer;margin:-6px 0 12px}
+  .nav-cta{display:flex;margin-top:26px;width:100%;justify-content:center}
+  .menu-backdrop{display:block;position:fixed;inset:0;background:rgba(23,52,47,.45);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:35}
+  body.menu-open nav{transform:translateX(0)}
+  body.menu-open .menu-backdrop{opacity:1;visibility:visible}
+  body.menu-open{overflow:hidden}
+}
 </style>
 </head>
 <body>
@@ -113,13 +127,16 @@ footer{background:#234642;color:#d8e5e1;padding:35px 0 20px;font-size:12px}
   <div class="container nav">
     <a href="#" class="logo"><span class="logo-mark">♥</span><span>成長同行<small>家庭・學生・學校支持</small></span></a>
     <nav>
+      <button class="menu-close" aria-label="關閉選單">✕</button>
       <a href="#issues">首頁</a><a href="#about">關於我</a><a href="#services">服務項目</a>
       <a href="#articles">家長教育專欄</a><a href="#school">學校合作</a><a href="#faq">常見問題</a>
+      <a class="nav-cta btn btn-primary" href="#contact">預約諮詢</a>
     </nav>
     <a class="btn btn-primary" href="#contact">預約諮詢</a>
     <button class="mobile-menu" aria-label="開啟選單">☰</button>
   </div>
 </header>
+<div class="menu-backdrop"></div>
 
 <main>
 <section class="hero">
@@ -250,12 +267,19 @@ footer{background:#234642;color:#d8e5e1;padding:35px 0 20px;font-size:12px}
 </footer>
 
 <script>
-document.querySelector('.mobile-menu').addEventListener('click',()=> {
-  const nav=document.querySelector('nav');
-  const open=nav.style.display==='flex';
-  nav.style.display=open?'none':'flex';
-  if(!open){nav.style.position='absolute';nav.style.top='64px';nav.style.left='0';nav.style.right='0';nav.style.background='#fff';nav.style.padding='20px 5%';nav.style.flexDirection='column';nav.style.boxShadow='0 10px 20px rgba(0,0,0,.08)';}
-});
+(function(){
+  const burger=document.querySelector('.mobile-menu');
+  const backdrop=document.querySelector('.menu-backdrop');
+  const closeBtn=document.querySelector('.menu-close');
+  const open=()=>{document.body.classList.add('menu-open');burger.setAttribute('aria-expanded','true');};
+  const close=()=>{document.body.classList.remove('menu-open');burger.setAttribute('aria-expanded','false');};
+  burger.addEventListener('click',open);
+  backdrop.addEventListener('click',close);
+  closeBtn.addEventListener('click',close);
+  document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',close));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+  window.addEventListener('resize',()=>{if(window.innerWidth>768)close();});
+})();
 </script>
 </body>
 </html>
