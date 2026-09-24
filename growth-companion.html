@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成長同行｜家長・學生・學校支持</title>
+<meta name="description" content="陪家長理解孩子，也陪孩子走過成長。提供家長諮詢、學生支持、親職教育與學校合作。">
+<style>
+:root{
+  --green:#2f8065; --green2:#4b9a7b; --deep:#234b46;
+  --mint:#eef8f4; --cream:#fbfaf5; --text:#29413d;
+  --muted:#687a76; --line:#dce9e4; --white:#fff;
+  --shadow:0 12px 35px rgba(37,79,69,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--text);background:#fff;line-height:1.75}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+.container{width:min(1160px,92%);margin:auto}
+header{height:76px;background:rgba(255,255,255,.96);position:sticky;top:0;z-index:20;border-bottom:1px solid #edf2ef}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--deep)}
+.logo-mark{width:40px;height:40px;border-radius:50% 50% 50% 12px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:22px;transform:rotate(-8deg)}
+.logo small{display:block;font-size:10px;color:#81908d;font-weight:500;letter-spacing:1px}
+nav{display:flex;gap:28px;font-size:14px;color:#50635f}
+nav a:hover{color:var(--green)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:12px 24px;border-radius:28px;border:1px solid var(--green);font-weight:700;font-size:14px;transition:.2s;cursor:pointer}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:#246b55;transform:translateY(-2px)}
+.btn-outline{background:#fff;color:var(--green)}
+.btn-outline:hover{background:var(--mint)}
+.hero{min-height:590px;position:relative;display:flex;align-items:center;background:linear-gradient(90deg,rgba(255,252,243,.98) 0%,rgba(255,252,243,.9) 38%,rgba(255,255,255,0) 70%),url("https://images.unsplash.com/photo-1535571393768-24b1f5b6f5c9?auto=format&fit=crop&w=1800&q=85") center/cover}
+.hero-content{max-width:600px;padding:70px 0}
+.eyebrow{font-family:cursive;color:#6c827b;font-size:18px;margin-bottom:10px}
+h1{font-size:clamp(36px,5vw,58px);line-height:1.25;margin:0 0 18px;color:#244a45;letter-spacing:-1px}
+.hero p{font-size:17px;color:#566966;max-width:560px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+section{padding:72px 0}
+.section-title{text-align:center;margin-bottom:38px}
+.section-title h2{font-size:31px;line-height:1.35;margin:0 0 8px;color:var(--deep)}
+.section-title p{margin:0;color:var(--muted)}
+.issue-section{background:linear-gradient(#f4fbf8,#eef8f4)}
+.issue-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
+.issue{background:#fff;border-radius:18px;padding:20px 12px;text-align:center;box-shadow:var(--shadow);min-height:175px;transition:.2s}
+.issue:hover{transform:translateY(-4px)}
+.icon{width:52px;height:52px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font-size:25px;color:#fff}
+.issue:nth-child(1) .icon{background:#ef8b91}.issue:nth-child(2) .icon{background:#f2a846}.issue:nth-child(3) .icon{background:#73a96e}.issue:nth-child(4) .icon{background:#5599c7}.issue:nth-child(5) .icon{background:#8c76c6}.issue:nth-child(6) .icon{background:#48aaa3}.issue:nth-child(7) .icon{background:#9a82d0}
+.issue h3{font-size:16px;margin:0 0 4px}.issue p{font-size:12px;color:#74827f;margin:0}
+.philosophy{padding:0;background:#fff}
+.philosophy-inner{min-height:360px;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.philosophy-copy{padding:55px 8% 55px 0}
+.philosophy-copy h2{font-size:36px;line-height:1.45;margin:0 0 18px;color:#244b46}
+.philosophy-copy p{color:var(--muted)}
+.philosophy-photo{height:360px;background:url("https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1100&q=85") center/cover}
+.services{background:#fff}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:linear-gradient(145deg,#fbfdfb,#eff8f4);border:1px solid #e2eee9;border-radius:16px;padding:25px;box-shadow:0 7px 22px rgba(44,88,77,.05)}
+.card .card-icon{font-size:30px;margin-bottom:8px}
+.card h3{margin:0 0 8px;font-size:19px}.card ul{padding-left:18px;color:#60716e;font-size:13px;margin:0 0 18px}
+.small-btn{font-size:12px;padding:8px 17px;border-radius:20px}
+.steps{background:#eff8f7}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:#fff;border-radius:15px;padding:25px;position:relative;box-shadow:var(--shadow)}
+.step-number{font-size:27px;color:var(--green);font-weight:800}
+.step h3{font-size:17px;margin:6px 0}.step p{font-size:13px;color:var(--muted);margin:0}
+.profile{background:#fff}
+.profile-inner{display:grid;grid-template-columns:300px 1fr 270px;gap:38px;align-items:center}
+.profile-photo{height:330px;border-radius:15px;overflow:hidden}
+.profile-photo img{height:100%}
+.profile h2{margin:0 0 12px;font-size:30px}.profile p{color:var(--muted)}
+.credentials{background:#f5faf7;border-radius:15px;padding:24px}.credentials h4{margin-top:0}.credentials li{font-size:13px;margin:8px 0;color:#5e716c}
+.articles{background:#fff}
+.article-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.article{border:1px solid #e4ece9;border-radius:12px;overflow:hidden;background:#fff}
+.article img{height:145px}.article-body{padding:15px}.tag{font-size:11px;color:#4c9a7a}.article h3{font-size:15px;line-height:1.5;margin:6px 0}.article time{font-size:11px;color:#98a5a2}
+.school{background:#eaf5f3}
+.school-inner{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:45px}
+.school-photo{height:270px;border-radius:15px;overflow:hidden}.school-photo img{height:100%}
+.school h2{font-size:31px}.check-list{list-style:none;padding:0}.check-list li{margin:8px 0}.check-list li::before{content:"✓";color:var(--green);font-weight:bold;margin-right:9px}
+.faq{padding-bottom:55px}
+.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+details{border:1px solid #dfe9e5;border-radius:10px;padding:14px 18px;background:#fff}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);font-size:14px;margin:12px 0 0}
+.final-cta{padding:75px 0;text-align:center;color:#fff;background:linear-gradient(rgba(29,72,66,.42),rgba(29,72,66,.58)),url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=85") center/cover}
+.final-cta h2{font-size:30px;margin:0 0 8px}.final-cta p{margin:0 0 25px}
+footer{background:#234642;color:#d8e5e1;padding:35px 0 20px;font-size:12px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-links{display:flex;gap:20px}
+.footer-note{text-align:center;color:#9db3ae;border-top:1px solid rgba(255,255,255,.12);margin-top:25px;padding-top:16px}
+.mobile-menu{display:none}
+@media(max-width:1000px){
+  .issue-grid{grid-template-columns:repeat(4,1fr)}
+  .service-grid,.article-grid{grid-template-columns:repeat(2,1fr)}
+  .profile-inner{grid-template-columns:250px 1fr}
+  .credentials{grid-column:1/-1}
+}
+@media(max-width:700px){
+  header,.nav{height:64px}.nav{padding:0 4%}nav{display:none}.mobile-menu{display:block;border:0;background:none;font-size:25px}
+  .hero{min-height:610px;background:linear-gradient(0deg,rgba(255,252,243,.98) 8%,rgba(255,252,243,.72) 58%,rgba(255,255,255,.15)),url("https://images.unsplash.com/photo-1535571393768-24b1f5b6f5c9?auto=format&fit=crop&w=1000&q=80") center/cover}
+  .hero-content{padding:40px 0 50px;align-self:end}.hero p{font-size:15px}.actions .btn{width:100%}
+  section{padding:52px 0}.section-title h2{font-size:26px}
+  .issue-grid{grid-template-columns:repeat(2,1fr)}.issue{min-height:155px}
+  .philosophy-inner,.school-inner{grid-template-columns:1fr}.philosophy-copy{padding:45px 0}.philosophy-photo{height:270px}
+  .service-grid,.step-grid,.article-grid,.faq-grid{grid-template-columns:1fr}
+  .profile-inner{grid-template-columns:1fr}.profile-photo{height:320px}
+  .footer-row{flex-direction:column;text-align:center}.footer-links{flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="#" class="logo"><span class="logo-mark">♥</span><span>成長同行<small>家庭・學生・學校支持</small></span></a>
+    <nav>
+      <a href="#issues">首頁</a><a href="#about">關於我</a><a href="#services">服務項目</a>
+      <a href="#articles">家長教育專欄</a><a href="#school">學校合作</a><a href="#faq">常見問題</a>
+    </nav>
+    <a class="btn btn-primary" href="#contact">預約諮詢</a>
+    <button class="mobile-menu" aria-label="開啟選單">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-content">
+    <div class="eyebrow">陪孩子走過成長的每一個階段</div>
+    <h1>當孩子的成長遇到卡關<br>家長不一定要一個人面對。</h1>
+    <p>學習、人際、情緒、親子溝通與校園適應，提供家長一個可以安心說出困擾、一起整理問題的專業支持空間。</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#contact">預約家長諮詢 →</a>
+      <a class="btn btn-outline" href="#issues">我想先了解孩子的問題</a>
+    </div>
+  </div>
+</section>
+
+<section id="issues" class="issue-section">
+  <div class="container">
+    <div class="section-title"><h2>你現在遇到的是哪一種情況？</h2><p>點選你關心的主題，了解更多資訊或尋求專業協助。</p></div>
+    <div class="issue-grid">
+      <article class="issue"><div class="icon">🏫</div><h3>孩子不願意上學</h3><p>抗拒上學、請假增加，家長不知道如何處理。</p></article>
+      <article class="issue"><div class="icon">💬</div><h3>親子溝通困難</h3><p>一開口就吵架，孩子什麼都不願意說。</p></article>
+      <article class="issue"><div class="icon">📖</div><h3>學習與課業壓力</h3><p>成績下降、缺乏動力，甚至開始逃避學習。</p></article>
+      <article class="issue"><div class="icon">👥</div><h3>同儕與人際關係</h3><p>被排擠、衝突或不知道如何融入團體。</p></article>
+      <article class="issue"><div class="icon">☁</div><h3>情緒與行為變化</h3><p>生氣、沉默、焦躁，或出現不同以往的行為。</p></article>
+      <article class="issue"><div class="icon">⌂</div><h3>家庭關係</h3><p>家庭教養方式不同，衝突開始影響孩子。</p></article>
+      <article class="issue"><div class="icon">♡</div><h3>青春期親子關係</h3><p>孩子長大了，原本有效的方法突然失效。</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="philosophy">
+  <div class="philosophy-inner container">
+    <div class="philosophy-copy">
+      <h2>孩子的問題<br>有時候需要的不是更多責備<br>而是有人陪你一起理解。</h2>
+      <p>每個孩子都有自己的故事，而家庭也需要被理解與支持。我們從孩子、家長與學校的脈絡出發，陪你整理現在發生的事情，找到適合家庭的下一步。</p>
+    </div>
+    <div class="philosophy-photo"></div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-title"><h2>我可以提供什麼協助？</h2><p>依據不同需求，提供家長、學生與學校的專業支持。</p></div>
+    <div class="service-grid">
+      <article class="card"><div class="card-icon">👨‍👩‍👧</div><h3>家長諮詢</h3><ul><li>親子溝通</li><li>教養困擾</li><li>學校問題</li><li>學習問題</li><li>青春期成長</li><li>家庭關係</li></ul><a href="#contact" class="btn btn-primary small-btn">了解更多 →</a></article>
+      <article class="card"><div class="card-icon">🧑‍🎓</div><h3>學生支持</h3><ul><li>校園適應</li><li>人際關係</li><li>情緒困擾</li><li>學習壓力</li><li>生涯探索</li></ul><a href="#contact" class="btn btn-primary small-btn">了解更多 →</a></article>
+      <article class="card"><div class="card-icon">📚</div><h3>親職教育</h3><ul><li>家長講座</li><li>親職工作坊</li><li>教養觀念分享</li><li>家庭溝通</li></ul><a href="#contact" class="btn btn-primary small-btn">了解更多 →</a></article>
+      <article class="card"><div class="card-icon">🏫</div><h3>學校合作</h3><ul><li>家長諮詢服務</li><li>學生支持</li><li>校園家庭議題諮詢</li><li>教師／行政人員諮詢</li></ul><a href="#school" class="btn btn-primary small-btn">合作洽詢 →</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="container">
+    <div class="section-title"><h2>第一次諮詢會怎麼進行？</h2><p>無論是家長或學生，都會從你的需求出發。</p></div>
+    <div class="step-grid">
+      <article class="step"><div class="step-number">01</div><h3>先說說發生了什麼</h3><p>家長可以描述目前的狀況，不需要先自己找到答案。</p></article>
+      <article class="step"><div class="step-number">02</div><h3>一起整理問題</h3><p>了解家庭、學校、孩子與事件之間的關係。</p></article>
+      <article class="step"><div class="step-number">03</div><h3>找到可以改變的地方</h3><p>不急著貼標籤，而是理解目前真正需要協助的地方。</p></article>
+      <article class="step"><div class="step-number">04</div><h3>討論下一步</h3><p>依實際情況討論後續支持、家庭策略或適當轉介。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="profile">
+  <div class="container profile-inner">
+    <div class="profile-photo"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=700&q=85" alt="諮詢師形象"></div>
+    <div>
+      <h2>認識諮詢師</h2>
+      <p>我相信，孩子的問題通常不只是孩子的問題。每個孩子的行為背後，都可能有家庭、學校與環境的影響。</p>
+      <p>我希望提供家長一個可以放心說出困擾、整理問題、一起找到方向的支持空間。</p>
+      <a href="#contact" class="btn btn-primary">了解更多關於我 →</a>
+    </div>
+    <aside class="credentials"><h4>專業背景</h4><ul><li>社會工作相關學歷</li><li>專業訓練與持續進修</li><li>多年學校與家庭服務經驗</li><li>主要服務：學生、家長、學校</li></ul></aside>
+  </div>
+</section>
+
+<section id="articles" class="articles">
+  <div class="container">
+    <div class="section-title" style="text-align:left"><h2>家長教育專欄</h2><p>提供實用的教養與溝通建議，陪你一起學習。</p></div>
+    <div class="article-grid">
+      <article class="article"><img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=700&q=80"><div class="article-body"><span class="tag">親子溝通</span><h3>孩子什麼都不願意跟父母說怎麼辦？</h3><time>2026.09.12</time></div></article>
+      <article class="article"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=700&q=80"><div class="article-body"><span class="tag">校園適應</span><h3>孩子突然不想上學，家長第一步該做什麼？</h3><time>2026.09.08</time></div></article>
+      <article class="article"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80"><div class="article-body"><span class="tag">青春期</span><h3>青春期孩子為什麼突然變難溝通？</h3><time>2026.09.05</time></div></article>
+      <article class="article"><img src="https://images.unsplash.com/photo-1453738773917-9c3eff1db985?auto=format&fit=crop&w=700&q=80"><div class="article-body"><span class="tag">學習壓力</span><h3>成績下降一定代表孩子不夠努力嗎？</h3><time>2026.09.01</time></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="school" class="school">
+  <div class="container school-inner">
+    <div class="school-photo"><img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=85" alt="學校合作"></div>
+    <div><h2>學校合作</h2><p>成為學校與家庭之間的專業支持者，協助建立更完整的學生與家長支持網絡。</p>
+      <ul class="check-list"><li>家長諮詢服務</li><li>親職教育與講座</li><li>學生支持工作</li><li>校園家庭議題諮詢</li><li>教師／行政人員相關諮詢</li></ul>
+      <a href="#contact" class="btn btn-primary">學校合作洽詢 →</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="section-title"><h2>常見問題 FAQ</h2><p>第一次接觸專業諮詢前，你可能想知道這些事情。</p></div>
+    <div class="faq-grid">
+      <details><summary>諮詢需要帶孩子一起來嗎？</summary><p>是否需要孩子參與，會依實際需求與服務安排討論，第一次也可以先由家長說明狀況。</p></details>
+      <details><summary>第一次諮詢會談多久？</summary><p>實際時間依服務方案而定，預約時會先說明流程與相關安排。</p></details>
+      <details><summary>諮詢費用如何計算？</summary><p>不同服務內容與合作方案可能不同，請透過預約入口詢問最新資訊。</p></details>
+      <details><summary>孩子知道要接受諮詢會抗拒怎麼辦？</summary><p>可以先從孩子感受到的困擾開始談，不需要一開始就用「問題」或「治療」等標籤定義孩子。</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="final-cta">
+  <div class="container">
+    <h2>如果你正在為孩子的事情困擾</h2>
+    <p>先不用急著找到答案，可以先找一個人談談。</p>
+    <a href="mailto:hello@example.com?subject=預約家長諮詢" class="btn btn-primary">預約諮詢 →</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="logo"><span class="logo-mark">♥</span><span>成長同行<small>家庭・學生・學校支持</small></span></div>
+      <div class="footer-links"><a href="#about">關於我</a><a href="#services">服務項目</a><a href="#articles">家長教育專欄</a><a href="#school">學校合作</a><a href="#faq">常見問題</a></div>
+    </div>
+    <div class="footer-note">© 2026 成長同行｜本網站內容僅供一般性資訊參考，實際服務依專業資格、服務範圍與個別情況安排。</div>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.mobile-menu').addEventListener('click',()=> {
+  const nav=document.querySelector('nav');
+  const open=nav.style.display==='flex';
+  nav.style.display=open?'none':'flex';
+  if(!open){nav.style.position='absolute';nav.style.top='64px';nav.style.left='0';nav.style.right='0';nav.style.background='#fff';nav.style.padding='20px 5%';nav.style.flexDirection='column';nav.style.boxShadow='0 10px 20px rgba(0,0,0,.08)';}
+});
+</script>
+</body>
+</html>
